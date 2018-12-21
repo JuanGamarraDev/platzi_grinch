@@ -28,17 +28,17 @@ function getDataFile($fileName) {
 }
 
 function newCsv($data, $fileName, $del) {
-  $tempMemory = fopen('php://memory', 'w');
-  /* Iterating data */
-  foreach ($data as $line) {
-    fputcsv($tempMemory, $line, $del);
-  }
-  fseek($tempMemory, 0);
-  /* Header for Csv file */
-  header('Content-Type: application/csv');
-  header('Content-Disposition: attachement; filename="' . $fileName . '";');
-  /* Download file */
-  fpassthru($tempMemory);
+	$tempMemory = fopen('php://memory', 'w');
+	/* Iterating data */
+	foreach ($data as $line) {
+	  fputcsv($tempMemory, $line, $del);
+	}
+	fseek($tempMemory, 0);
+	/* Header for Csv file */
+	header('Content-Type: application/csv');
+	header('Content-Disposition: attachement; filename="' . $fileName . '";');
+	/* Download file */
+	fpassthru($tempMemory);
 }
 
 $dataToCsv = getDataFile('casa.csv');
