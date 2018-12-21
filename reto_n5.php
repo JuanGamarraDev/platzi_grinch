@@ -23,7 +23,6 @@ function getDataFile($fileName) {
 	    }
 	  }
 	}
-
 	return $fileData;
 }
 
